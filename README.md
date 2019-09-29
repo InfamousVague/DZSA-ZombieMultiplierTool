@@ -5,7 +5,7 @@ Multiply the zombie count in the `zombie_territories.xml` files in DayZ SA progr
 ## Build Your Own File
 To build your own file, you'll need to run this application with flags corrispoinding to your multiplier you'd like to apply. For example to increase the spawn amount of `InfectedArmy` zombies to 2x default, you'd add the flag `-InfectedArmy=2`.
 
-`./main -InfectedGlobal=2 -InfectedArmy=3 -InfectedPolice=2`
+`./ZombieMultiplierTool -InfectedGlobal=2 -InfectedArmy=3 -InfectedPolice=2`
 
 Flag Types:
 ```
