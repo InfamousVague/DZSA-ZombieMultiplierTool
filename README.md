@@ -9,10 +9,12 @@ Additional multipliers can be added on top of the `InfectedGlobal` flag to incre
 
 `./ZombieMultiplierTool -InfectedGlobal=2 -InfectedArmy=3 -InfectedPolice=2`
 
-
-
 Flag Types:
 ```
+// Modifiers
+AffectMin // If set to true, minimum spawns will also be multiplied
+Radius // If you wish to multiply the spawn radius, you can do so with this flag
+// Infected Flags
 InfectedArmy
 InfectedVillage
 InfectedMedic

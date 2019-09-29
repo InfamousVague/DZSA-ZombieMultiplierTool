@@ -39,6 +39,8 @@ type Zone struct {
 
 // Flags available for change
 type Flags struct {
+	AffectMin           *bool
+	Radius              *int
 	InfectedGlobal      *int
 	InfectedArmy        *int
 	InfectedVillage     *int
@@ -51,26 +53,34 @@ type Flags struct {
 	InfectedSolitude    *int
 }
 
-func buildMultipliedZone(multiplier int, zone Zone) Zone {
+func buildMultipliedZone(multiplier int, radiusMultiplier int, affectMin bool, zone Zone) Zone {
 	newZone := zone
-	// smin
-	smin, _ := strconv.Atoi(zone.Smin)
-	newZone.Smin = strconv.Itoa(smin * multiplier)
+	if affectMin {
+		// smin
+		smin, _ := strconv.Atoi(zone.Smin)
+		newZone.Smin = strconv.Itoa(smin * multiplier)
+
+		// dmin
+		dmin, _ := strconv.Atoi(zone.Dmin)
+		newZone.Dmin = strconv.Itoa(dmin * multiplier)
+	}
 	// smax
 	smax, _ := strconv.Atoi(zone.Smax)
 	newZone.Smax = strconv.Itoa(smax * multiplier)
-	// dmin
-	dmin, _ := strconv.Atoi(zone.Dmin)
-	newZone.Dmin = strconv.Itoa(dmin * multiplier)
 	// dmax
 	dmax, _ := strconv.Atoi(zone.Dmax)
 	newZone.Dmax = strconv.Itoa(dmax * multiplier)
+	// r
+	r, _ := strconv.Atoi(zone.R)
+	newZone.R = strconv.Itoa(r * radiusMultiplier)
 	return newZone
 }
 
 func main() {
 	// Flags
 	flags := Flags{
+		AffectMin:           flag.Bool("AffectMin", false, "Also multiplies minimum zombie spawn rate if true"),
+		Radius:              flag.Int("Radius", 1, "Infected radius spawn multiplier."),
 		InfectedGlobal:      flag.Int("InfectedGlobal", 1, "InfectedGlobal multiplier amount (Real Number)."),
 		InfectedArmy:        flag.Int("InfectedArmy", 1, "InfectedArmy multiplier amount (Real Number)."),
 		InfectedVillage:     flag.Int("InfectedVillage", 1, "InfectedVillage multiplier amount (Real Number)."),
@@ -86,8 +96,10 @@ func main() {
 	// Parse flags
 	flag.Parse()
 
-	fmt.Printf(`
-Multipliers:
+	color.Blue("Sepcial Flags:")
+	fmt.Printf(`AffectMin		- %v`+"\n\n", *flags.AffectMin)
+	color.Blue("Multipliers:")
+	fmt.Printf(`Radius			- %v
 Global			- %v
 InfectedArmy 		- %v
 InfectedVillage 	- %v
@@ -98,6 +110,7 @@ InfectedIndustrial 	- %v
 InfectedFirefighter	- %v
 InfectedCity		- %v
 InfectedSolitude	- %v`+"\n\n",
+		*flags.Radius,
 		*flags.InfectedGlobal,
 		*flags.InfectedArmy,
 		*flags.InfectedVillage,
@@ -117,7 +130,7 @@ InfectedSolitude	- %v`+"\n\n",
 		fmt.Println(err)
 	}
 
-	color.Yellow("Opened base Zombie Territories XML...")
+	color.Blue("Opened base Zombie Territories XML...\n")
 	// Keep file open
 	defer zombieTerritoriesXML.Close()
 
@@ -139,6 +152,8 @@ InfectedSolitude	- %v`+"\n\n",
 			// Activated multipliers
 			territories.Territories[i].Zones[j] = buildMultipliedZone(
 				*flags.InfectedArmy+*flags.InfectedGlobal-1,
+				*flags.Radius,
+				*flags.AffectMin,
 				selectedZones[j],
 			)
 		}
