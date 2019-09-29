@@ -30,3 +30,6 @@ You can also use the global multiplier flag to set a base multiplier (if you jus
 
 ## Input and Output files
 Set the `xml/zombie_territories.base.xml` to the contents of your current zombie_territories file from your server. The output file will be `xml/zombie_territories.xml` located after the program runs and modifies your xml base.
+
+## Additional Spawns
+If you'd like to add additional spawns, add your spawns to the `xml/additional_spawns.xml` file and build with the flag `-AdditionalSpawns=true`.

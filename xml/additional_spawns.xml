@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<territory-type>
+    <territory color="2809946700">
+        <!--Add additional spawns below-->
+        <zone name="InfectedVillage" smin="0" smax="0" dmin="7" dmax="13" x="3821.50" z="6487.50" r="400"/>
+    </territory>
+</territory-type>

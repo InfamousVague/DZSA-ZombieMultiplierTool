@@ -39,6 +39,7 @@ type Zone struct {
 
 // Flags available for change
 type Flags struct {
+	AdditionalSpawns    *bool
 	AffectMin           *bool
 	Radius              *int
 	InfectedGlobal      *int
@@ -79,6 +80,7 @@ func buildMultipliedZone(multiplier int, radiusMultiplier int, affectMin bool, z
 func main() {
 	// Flags
 	flags := Flags{
+		AdditionalSpawns:    flag.Bool("AdditionalSpawns", false, "Load in additional spawns xml if true"),
 		AffectMin:           flag.Bool("AffectMin", false, "Also multiplies minimum zombie spawn rate if true"),
 		Radius:              flag.Int("Radius", 1, "Infected radius spawn multiplier."),
 		InfectedGlobal:      flag.Int("InfectedGlobal", 1, "InfectedGlobal multiplier amount (Real Number)."),
@@ -97,7 +99,11 @@ func main() {
 	flag.Parse()
 
 	color.Blue("Sepcial Flags:")
-	fmt.Printf(`AffectMin		- %v`+"\n\n", *flags.AffectMin)
+	fmt.Printf(`AffectMin		- %v
+AdditionalSpawns	- %v`+"\n\n",
+		*flags.AffectMin,
+		*flags.AdditionalSpawns,
+	)
 	color.Blue("Multipliers:")
 	fmt.Printf(`Radius			- %v
 Global			- %v
@@ -141,7 +147,7 @@ InfectedSolitude	- %v`+"\n\n",
 
 	// Scan territories
 	for i := 0; i < len(territories.Territories); i++ {
-		fmt.Printf("Territoriy %v found (%v zones)...\n",
+		color.White("Territoriy %v found (%v zones)...\n",
 			territories.Territories[i].Color,
 			len(territories.Territories[i].Zones),
 		)
@@ -157,7 +163,24 @@ InfectedSolitude	- %v`+"\n\n",
 				selectedZones[j],
 			)
 		}
-		fmt.Printf("Multipliers applied to %v zones. \n", len(selectedZones))
+		color.White("Multipliers applied to %v zones. \n", len(selectedZones))
+	}
+
+	// Load additional zombie spawns
+	if *flags.AdditionalSpawns {
+		color.Blue("Applying additional spawnpoints...")
+		additionalTerritoriesXML, err := os.Open("xml/additional_spawns.xml")
+		if err != nil {
+			fmt.Println(err)
+		}
+		defer additionalTerritoriesXML.Close()
+
+		additionalByteValue, _ := ioutil.ReadAll(additionalTerritoriesXML)
+
+		var additionalTerritories Territories
+		xml.Unmarshal(additionalByteValue, &additionalTerritories)
+
+		territories.Territories = append(territories.Territories, additionalTerritories.Territories[0])
 	}
 
 	file, _ := xml.MarshalIndent(territories, "", "	")
