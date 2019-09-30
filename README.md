@@ -29,7 +29,7 @@ For example, if you'd like to increase the global spawn rate by 1.5, then increa
 
 **Infected Types**...
 
-``
+```
 InfectedArmy
 InfectedVillage
 InfectedMedic
