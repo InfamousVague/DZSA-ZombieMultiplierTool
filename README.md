@@ -8,6 +8,7 @@ Multiply the zombie count in the `zombie_territories.xml` files in DayZ SA autom
 2 - Run **ZombieMultiplierTool** with the flags you want to use.
 
 _Example:_
+
 ❕ `./ZombieMultiplierTool -InfectedGlobal=1.8`
 
 3 - Your outputted file is at `xml/zombie_territories.xml`, replace the file on your server with this.
@@ -23,8 +24,11 @@ For example, if you'd like to increase the global spawn rate by 1.5, then increa
 
 ### 🏳️ Flags
 **AffectMin** - If set to true, minimum spawns will also be multiplied.
+
 **Radius** - Set this to an amount to multiply the spawn radius by, this will spread out the spawns of zombies.
+
 **Infected Types**...
+
 ``
 InfectedArmy
 InfectedVillage
