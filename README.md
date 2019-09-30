@@ -1,20 +1,26 @@
-# ZombieMultiplierTool
+# 🧟 ZombieMultiplierTool
 
-Multiply the zombie count in the `zombie_territories.xml` files in DayZ SA programatically.
+Multiply the zombie count in the `zombie_territories.xml` files in DayZ SA automatically.
 
-## Build Your Own File
-To build your own file, you'll need to run this application with flags corrispoinding to your multiplier you'd like to apply. For example to increase the spawn amount of `InfectedArmy` zombies to 2x default, you'd add the flag `-InfectedArmy=2`.
+## 🗃️ Build Your Own File
+1 - Update `xml/zombie_territories.xml` with the contents of your `zombie_territories.xml` file from your server. 
+2 - Run **ZombieMultiplierTool** with the flags you want to use.
+Example:
+### ❕ `./ZombieMultiplierTool -InfectedGlobal=1.8`
+3 - Your outputted file is at `xml/zombie_territories.xml`, replace the file on your server with this.
+4 - Restart your DZSA server!
 
-Additional multipliers can be added on top of the `InfectedGlobal` flag to increase ALL spawns by the global amount, then additional multipliers on top of that. The following for example will globally multiply spawns by 2, and multiply `InfectedArmy` spawns by 4, and `InfectedPolice` spawns by 3...
+Additional multipliers can be added on top of the **InfectedGlobal** flag to increase ALL spawns by the global amount, then additional multipliers on top of that.
 
-`./ZombieMultiplierTool -InfectedGlobal=2 -InfectedArmy=3 -InfectedPolice=2`
+For example, if you'd like to increase the global spawn rate by 1.5, then increase the **InfectedArmy** spawn rates by another 2x multiplier, you'd run the command below, note this increases the **InfectedArmy** spawn rate to 2.5.
 
-Flag Types:
-```
-// Modifiers
-AffectMin // If set to true, minimum spawns will also be multiplied
-Radius // If you wish to multiply the spawn radius, you can do so with this flag
-// Infected Flags
+`./ZombieMultiplierTool -InfectedGlobal=1.5 -InfectedArmy=2`
+
+### 🏳️ Flags
+**AffectMin** - If set to true, minimum spawns will also be multiplied.
+**Radius** - Set this to an amount to multiply the spawn radius by, this will spread out the spawns of zombies.
+**Infected Types**...
+``
 InfectedArmy
 InfectedVillage
 InfectedMedic
@@ -26,10 +32,5 @@ InfectedCity
 InfectedSolitude
 ```
 
-You can also use the global multiplier flag to set a base multiplier (if you just want to 2x every type of zombie, you can set this flag and ignore the rest). For example `-InfectedGlobal=2`.
-
-## Input and Output files
-Set the `xml/zombie_territories.base.xml` to the contents of your current zombie_territories file from your server. The output file will be `xml/zombie_territories.xml` located after the program runs and modifies your xml base.
-
-## Additional Spawns
+## 🎯 Additional Spawns
 If you'd like to add additional spawns, add your spawns to the `xml/additional_spawns.xml` file and build with the flag `-AdditionalSpawns=true`.
