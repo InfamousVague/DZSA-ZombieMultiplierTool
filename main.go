@@ -41,39 +41,39 @@ type Zone struct {
 type Flags struct {
 	AdditionalSpawns    *bool
 	AffectMin           *bool
-	Radius              *int
-	InfectedGlobal      *int
-	InfectedArmy        *int
-	InfectedVillage     *int
-	InfectedMedic       *int
-	InfectedPolice      *int
-	InfectedReligious   *int
-	InfectedIndustrial  *int
-	InfectedFirefighter *int
-	InfectedCity        *int
-	InfectedSolitude    *int
+	Radius              *float64
+	InfectedGlobal      *float64
+	InfectedArmy        *float64
+	InfectedVillage     *float64
+	InfectedMedic       *float64
+	InfectedPolice      *float64
+	InfectedReligious   *float64
+	InfectedIndustrial  *float64
+	InfectedFirefighter *float64
+	InfectedCity        *float64
+	InfectedSolitude    *float64
 }
 
-func buildMultipliedZone(multiplier int, radiusMultiplier int, affectMin bool, zone Zone) Zone {
+func buildMultipliedZone(multiplier float64, radiusMultiplier float64, affectMin bool, zone Zone) Zone {
 	newZone := zone
 	if affectMin {
 		// smin
 		smin, _ := strconv.Atoi(zone.Smin)
-		newZone.Smin = strconv.Itoa(smin * multiplier)
+		newZone.Smin = strconv.Itoa(int(float64(smin) * multiplier))
 
 		// dmin
 		dmin, _ := strconv.Atoi(zone.Dmin)
-		newZone.Dmin = strconv.Itoa(dmin * multiplier)
+		newZone.Dmin = strconv.Itoa(int(float64(dmin) * multiplier))
 	}
 	// smax
 	smax, _ := strconv.Atoi(zone.Smax)
-	newZone.Smax = strconv.Itoa(smax * multiplier)
+	newZone.Smax = strconv.Itoa(int(float64(smax) * multiplier))
 	// dmax
 	dmax, _ := strconv.Atoi(zone.Dmax)
-	newZone.Dmax = strconv.Itoa(dmax * multiplier)
+	newZone.Dmax = strconv.Itoa(int(float64(dmax) * multiplier))
 	// r
 	r, _ := strconv.Atoi(zone.R)
-	newZone.R = strconv.Itoa(r * radiusMultiplier)
+	newZone.R = strconv.Itoa(int(float64(r) * radiusMultiplier))
 	return newZone
 }
 
@@ -82,17 +82,17 @@ func main() {
 	flags := Flags{
 		AdditionalSpawns:    flag.Bool("AdditionalSpawns", false, "Load in additional spawns xml if true"),
 		AffectMin:           flag.Bool("AffectMin", false, "Also multiplies minimum zombie spawn rate if true"),
-		Radius:              flag.Int("Radius", 1, "Infected radius spawn multiplier."),
-		InfectedGlobal:      flag.Int("InfectedGlobal", 1, "InfectedGlobal multiplier amount (Real Number)."),
-		InfectedArmy:        flag.Int("InfectedArmy", 1, "InfectedArmy multiplier amount (Real Number)."),
-		InfectedVillage:     flag.Int("InfectedVillage", 1, "InfectedVillage multiplier amount (Real Number)."),
-		InfectedMedic:       flag.Int("InfectedMedic", 1, "InfectedMedic multiplier amount (Real Number)."),
-		InfectedPolice:      flag.Int("InfectedPolice", 1, "InfectedPolice multiplier amount (Real Number)."),
-		InfectedReligious:   flag.Int("InfectedReligious", 1, "InfectedReligious multiplier amount (Real Number)."),
-		InfectedIndustrial:  flag.Int("InfectedIndustrial", 1, "InfectedIndustrial multiplier amount (Real Number)."),
-		InfectedFirefighter: flag.Int("InfectedFirefighter", 1, "InfectedFirefighter multiplier amount (Real Number)."),
-		InfectedCity:        flag.Int("InfectedCity", 1, "InfectedCity multiplier amount (Real Number)."),
-		InfectedSolitude:    flag.Int("InfectedSolitude", 1, "InfectedSolitude multiplier amount (Real Number)."),
+		Radius:              flag.Float64("Radius", 1, "Infected radius spawn multiplier."),
+		InfectedGlobal:      flag.Float64("InfectedGlobal", 1, "InfectedGlobal multiplier amount (Real Number)."),
+		InfectedArmy:        flag.Float64("InfectedArmy", 1, "InfectedArmy multiplier amount (Real Number)."),
+		InfectedVillage:     flag.Float64("InfectedVillage", 1, "InfectedVillage multiplier amount (Real Number)."),
+		InfectedMedic:       flag.Float64("InfectedMedic", 1, "InfectedMedic multiplier amount (Real Number)."),
+		InfectedPolice:      flag.Float64("InfectedPolice", 1, "InfectedPolice multiplier amount (Real Number)."),
+		InfectedReligious:   flag.Float64("InfectedReligious", 1, "InfectedReligious multiplier amount (Real Number)."),
+		InfectedIndustrial:  flag.Float64("InfectedIndustrial", 1, "InfectedIndustrial multiplier amount (Real Number)."),
+		InfectedFirefighter: flag.Float64("InfectedFirefighter", 1, "InfectedFirefighter multiplier amount (Real Number)."),
+		InfectedCity:        flag.Float64("InfectedCity", 1, "InfectedCity multiplier amount (Real Number)."),
+		InfectedSolitude:    flag.Float64("InfectedSolitude", 1, "InfectedSolitude multiplier amount (Real Number)."),
 	}
 
 	// Parse flags
