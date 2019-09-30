@@ -5,8 +5,8 @@ Multiply the zombie count in the `zombie_territories.xml` files in DayZ SA autom
 ## 🗃️ Build Your Own File
 1 - Update `xml/zombie_territories.xml` with the contents of your `zombie_territories.xml` file from your server. 
 2 - Run **ZombieMultiplierTool** with the flags you want to use.
-Example:
-### ❕ `./ZombieMultiplierTool -InfectedGlobal=1.8`
+_Example:_
+❕ `./ZombieMultiplierTool -InfectedGlobal=1.8`
 3 - Your outputted file is at `xml/zombie_territories.xml`, replace the file on your server with this.
 4 - Restart your DZSA server!
 
