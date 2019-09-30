@@ -34,7 +34,7 @@ InfectedArmy
 InfectedVillage
 InfectedMedic
 InfectedPolice
-InfectedReligious
+InfectedReligious2
 InfectedIndustrial
 InfectedFirefighter
 InfectedCity
@@ -43,3 +43,6 @@ InfectedSolitude
 
 ## 🎯 Additional Spawns
 If you'd like to add additional spawns, add your spawns to the `xml/additional_spawns.xml` file and build with the flag `-AdditionalSpawns=true`.
+
+## Reset To Defaults
+Ah crap, you have way to many zombies, you've made a huge mistake and you want to get the normal config back! Just run `./ZombieMultiplierTool` again and it will generate a fresh config from the base.
