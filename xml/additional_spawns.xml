@@ -2,6 +2,31 @@
 <territory-type>
     <territory color="2809946700">
         <!--Add additional spawns below-->
-        <zone name="InfectedVillage" smin="0" smax="0" dmin="7" dmax="13" x="3821.50" z="6487.50" r="400"/>
+        <!--Wilderness-->
+        <zone name="InfectedVillage" smin="0" smax="0" dmin="7" dmax="13" x="3821.50" z="6487.50" r="250"/>
+        <!--More City Spawns-->
+        <zone name="InfectedCity" smin="20" smax="20" dmin="15" dmax="20" x="10493.9" z="2349.17" r="400" d="2"/> 
+        <zone name="InfectedArmy" smin="5" smax="10" dmin="5" dmax="15" x="10493.9" z="2349.17" r="90" d="2"/>
+        <zone name="InfectedCity" smin="30" smax="50" dmin="100" dmax="150" x="6501.6" z="2518.65" r="400" d="2"/>
+        <zone name="InfectedCity" smin="10" smax="20" dmin="25" dmax="50" x="6572.6" z="2442.65" r="100" d="2"/>
+        <zone name="InfectedArmy" smin="5" smax="10" dmin="5" dmax="10" x="7241.66" z="3038.28" r="150" d="2"/>
+        <zone name="InfectedCity" smin="10" smax="30" dmin="20" dmax="50" x="7923.6" z="3079.65" r="250" d="2"/>
+        <zone name="InfectedCity" smin="10" smax="30" dmin="20" dmax="75" x="7470.6" z="3161.65" r="250" d="2"/>
+        <zone name="InfectedCity" smin="15" smax="30" dmin="30" dmax="75" x="6578.6" z="3009.65" r="200" d="2"/>
+        <zone name="InfectedCity" smin="10" smax="30" dmin="20" dmax="50" x="7181.6" z="2579.65" r="250" d="2"/>
+        <zone name="InfectedCity" smin="10" smax="30" dmin="20" dmax="75" x="6473.6" z="2714.65" r="250" d="2"/>
+        <zone name="InfectedMedic" smin="5" smax="10" dmin="5" dmax="10" x="6473.6" z="2714.65" r="150" d="2"/>
+        <zone name="InfectedCity" smin="10" smax="20" dmin="15" dmax="50" x="6708.6" z="936.65" r="150" d="2"/>
+        <zone name="InfectedCity" smin="10" smax="30" dmin="20" dmax="75" x="6303.6" z="2475.65" r="250" d="2"/>
+        <zone name="InfectedCity" smin="5" smax="10" dmin="10" dmax="50" x="6704.6" z="3581.65" r="250" d="2"/>
+        <zone name="InfectedCity" smin="10" smax="30" dmin="20" dmax="75" x="6117.6" z="3131.65" r="300" d="2"/>
+        <zone name="InfectedCity" smin="10" smax="30" dmin="20" dmax="100" x="5734.6" z="2528.65" r="300" d="2"/>
+        <zone name="InfectedCity" smin="10" smax="15" dmin="10" dmax="20" x="4941.422" z="2446.55" r="100" d="2"/>
+        <zone name="InfectedArmy" smin="5" smax="25" dmin="15" dmax="30" x="5245.422" z="2178.55" r="130" d="2"/>
+        <zone name="InfectedArmy" smin="5" smax="25" dmin="15" dmax="30" x="5079.422" z="2295.55" r="100" d="2"/>
+        <zone name="InfectedCity" smin="10" smax="15" dmin="10" dmax="20" x="841.422" z="1939.55" r="50" d="2"/>
+        <zone name="InfectedArmy" smin="5" smax="10" dmin="10" dmax="15" x="841.422" z="1939.55" r="100" d="2"/>
+        <zone name="InfectedArmy" smin="10" smax="15" dmin="10" dmax="25" x="754.422" z="1882.55" r="50" d="2"/>
+        <zone name="InfectedArmy" smin="10" smax="15" dmin="10" dmax="25" x="2511.57" z="5076.39" r="200" d="2"/>
     </territory>
 </territory-type>
