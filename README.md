@@ -46,3 +46,7 @@ If you'd like to add additional spawns, add your spawns to the `xml/additional_s
 
 ## Reset To Defaults
 Ah crap, you have way to many zombies, you've made a huge mistake and you want to get the normal config back! Just run `./ZombieMultiplierTool` again and it will generate a fresh config from the base.
+
+## Windows Users
+Windows users can use all of the same flags listed above simply run the `.exe` instead of the unlabled binary. For example 
+`ZombieMultiplierTool.exe -InfectedGlobal=1.5 -InfectedArmy=2` from the command prompt.
