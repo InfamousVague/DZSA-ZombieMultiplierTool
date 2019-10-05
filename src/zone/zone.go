@@ -18,7 +18,7 @@ type Territory struct {
 	Color   string   `xml:"color,attr"`
 }
 
-// Zone represents a spawnpoint and rates of an entity 
+// Zone represents a spawnpoint and rates of an entity
 type Zone struct {
 	XMLName xml.Name `xml:"zone"`
 	Name    string   `xml:"name,attr"`
@@ -31,24 +31,23 @@ type Zone struct {
 	R       string   `xml:"r,attr"`
 }
 
+func convertMultiply(a string, multiplier float64) string {
+	b, _ := strconv.Atoi(a)
+	return strconv.Itoa(int(float64(b) * multiplier))
+}
+
 // MultiplyZone values by provided amounts
 func (zone *Zone) MultiplyZone(multiplier float64, radiusMultiplier float64, affectMin bool) {
 	if affectMin {
 		// smin
-		smin, _ := strconv.Atoi(zone.Smin)
-		zone.Smin = strconv.Itoa(int(float64(smin) * multiplier))
-
+		zone.Smin = convertMultiply(zone.Smin, multiplier)
 		// dmin
-		dmin, _ := strconv.Atoi(zone.Dmin)
-		zone.Dmin = strconv.Itoa(int(float64(dmin) * multiplier))
+		zone.Dmin = convertMultiply(zone.Dmin, multiplier)
 	}
 	// smax
-	smax, _ := strconv.Atoi(zone.Smax)
-	zone.Smax = strconv.Itoa(int(float64(smax) * multiplier))
+	zone.Smax = convertMultiply(zone.Smax, multiplier)
 	// dmax
-	dmax, _ := strconv.Atoi(zone.Dmax)
-	zone.Dmax = strconv.Itoa(int(float64(dmax) * multiplier))
+	zone.Dmax = convertMultiply(zone.Dmax, multiplier)
 	// r
-	r, _ := strconv.Atoi(zone.R)
-	zone.R = strconv.Itoa(int(float64(r) * radiusMultiplier))
+	zone.R = convertMultiply(zone.R, multiplier)
 }

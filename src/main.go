@@ -102,10 +102,10 @@ InfectedSolitude	- %v`+"\n\n",
 			territories.Territories[i].Color,
 			len(territories.Territories[i].Zones),
 		)
+
 		// Scan zones
 		selectedZones := territories.Territories[i].Zones
 		for j := 0; j < len(selectedZones); j++ {
-			// Apply multipliers to zone
 			selectedZones[j].MultiplyZone(
 				*flags.InfectedArmy+*flags.InfectedGlobal-1,
 				*flags.Radius,
